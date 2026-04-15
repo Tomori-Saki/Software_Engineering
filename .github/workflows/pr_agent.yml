@@ -1,0 +1,26 @@
+name: Qodo AI Code Review (DeepSeek)
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  issue_comment:
+    types: [created]
+jobs:
+  pr_agent_job:
+    if: ${{ github.event.sender.type != 'Bot' }}
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: read
+    steps:
+      - name: PR Agent Action
+        uses: docker://codiumai/pr-agent:github_action
+        env:
+          CONFIG.MODEL_TYPE: "openai"
+          OPENAI.BASE_URL: "https://api.deepseek.com/v1"
+          OPENAI.KEY: ${{ secrets.DEEPSEEK_KEY }}
+          CONFIG.MODEL: "deepseek-chat"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_action_config.auto_review: "true"
+          pr_reviewer.language: "zh"
+          pr_reviewer.extra_instructions: "请作为一名资深的软件工程师，重点检查代码的健壮性和逻辑严密性。"
