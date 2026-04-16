@@ -34,6 +34,48 @@ dependency-reduced-pom.xml
 .gradle/
 build/
 
+# Node.js / React Native
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+coverage/
+.expo/
+.expo-shared/
+
+# React Native / Metro
+.metro-health-check*
+metro-cache/
+
+# Android 构建产物
+android/.gradle/
+android/app/build/
+android/build/
+*.apk
+*.aab
+
+# iOS / CocoaPods
+ios/Pods/
+ios/build/
+*.xcworkspace
+*.xcuserstate
+DerivedData/
+
+# Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.fvm/
+.packages
+.pub/
+.pub-cache/
+ios/Flutter/ephemeral/
+ios/Flutter/flutter_export_environment.sh
+linux/flutter/ephemeral/
+macos/Flutter/ephemeral/
+windows/flutter/ephemeral/
+
 # 日志文件
 logs/
 *.log
@@ -44,6 +86,9 @@ logs/
 *.trace.db
 *.sqlite
 *.sqlite3
+*.sql
+*.sql.gz
+*.mysql
 
 # 环境变量与本地覆盖配置
 .env
